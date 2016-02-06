@@ -1,0 +1,40 @@
+<configuration>
+
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>logs/di-geocoder.%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>30</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<logger name="com.hsg.di">
+		<level value="info"/>
+	</logger>
+
+	<logger name="org.springframework">
+		<level value="error"/>
+	</logger>
+
+	<logger name="org.apache.http">
+		<level value="info"/>
+	</logger>
+
+	<logger name="geocodeResponse" additivity="false">
+    <level value="debug"/>
+    <appender-ref ref="FILE"/>
+	</logger>
+
+	<root level="error">
+		<appender-ref ref="STDOUT"/>
+	</root>
+
+</configuration>
