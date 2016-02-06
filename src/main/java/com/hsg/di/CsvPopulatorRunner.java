@@ -25,32 +25,19 @@ public class CsvPopulatorRunner {
 		ApplicationContext ctx = SpringApplication.run(DiConfig.class, args);
 		CsvPopulator csvPopulator = (CsvPopulator) ctx.getBean("csvPopulator");
 
-		// Geocode home sales
-//		csvPopulator.populate(Arrays.asList(
-//				"2013.csv",
-//				"2014.csv",
-//				"2015.csv"
-//		));
-
-		// Geocode home sales
-//		csvPopulator.populateMetroStations(Arrays.asList(
-//				"Metro_Drink_300m.csv"
-//		));
-
-//		csvPopulator.populateMLSHomeSales(Arrays.asList(
-//				"JanuarySalesDC.csv"
-//		));
-
+		// Geocode 2013-2015 home sales
 		csvPopulator.populate(Arrays.asList(
 				"data/2013.csv",
 				"data/2014.csv",
 				"data/2015.csv"
 		), 0, 1);
 
+		// Geocode metro bars
 		csvPopulator.populate(Arrays.asList(
 				"data/metro/Metro_Drink_300m.csv"
 		), 2, -1);
 
+		// Geocode Jan home sales
 		csvPopulator.populate(Arrays.asList(
 				"data/JanuarySalesDC.csv"
 		), 5, 13);

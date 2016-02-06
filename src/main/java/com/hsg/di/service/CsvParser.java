@@ -52,10 +52,6 @@ public class CsvParser {
 			int recordsParsed = 0;
 			long waitTimeMillis = 0;
 			if (entries.size() > 0) {
-	//			Arrays.asList(entries.get(0)).forEach(col -> {System.out.print(col + ",");});
-	//			List<String[]> withoutHeaders = entries.subList(1, entries.size());
-	//			withoutHeaders.forEach(writer::writeNext);
-//				Executor executor = Executors.newCachedThreadPool();
 				for (int i = 0; i < entries.size(); i++) {
 					List<String> row = new ArrayList<>(Arrays.asList(entries.get(i)));
 					if (i % PARSE_STATUS_MOD == 0) log.info("Parsing record " + i + " through " + (i + PARSE_STATUS_MOD));
@@ -104,24 +100,5 @@ public class CsvParser {
 			log.error("An error occurred while importing filename " + filename + ".", e);
 		}
 	}
-
-//	public void commonsCsvParse(String filename) throws IOException {
-//		log.info("commonsCsvParse '" + filename + "'...");
-//		Reader in = new InputStreamReader(this.getClass().getClassLoader().getResourceAsStream(filename));
-//		Iterable<CSVRecord> records = CSVFormat.EXCEL.
-//				withHeader().
-//				withEscape('\\').
-//				parse(in);
-//
-//		FileWriter writer = new FileWriter("out.csv");
-//		CSVPrinter printer = new CSVPrinter(writer, CSVFormat.DEFAULT);
-//		records.forEach(record -> {
-//			try {
-//				printer.print(record);
-//			} catch (IOException e) {
-//				log.error("Error printing record.", e);
-//			}
-//		});
-//	}
 
 }
